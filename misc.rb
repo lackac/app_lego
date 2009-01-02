@@ -48,7 +48,6 @@ if File.exists?('vendor/plugins/haml')
 #flash
   - flash.each do |key, value|
     %div{:id => "flash_\#{key}"}= value
-  - end
   HAML
 
   file 'app/views/layouts/application.html.haml', <<-HAML
