@@ -6,13 +6,23 @@ locales.each do |locale|
     open("http://github.com/svenfuchs/rails-i18n/raw/master/rails/locale/#{locale}").read
 end
 
+def uri_exists?(uri)
+  uri = URI.parse(uri)
+  Net::HTTP.start(uri.host, uri.port) do |http|
+    http.head(uri.request_uri).is_a?(Net::HTTPSuccess)
+  end
+end
+
 if @base_path
   log '', 'Trying to download module specific localizations...'
   @used_legos.each do |lego|
     locales.each do |locale|
       fn = "#{locale.split(".").first}.#{lego}.yml"
-      content = open("#{@base_path}/locales/#{fn}").read rescue nil
-      file "config/locales/#{fn}", content if content
+      path = "#{@base_path}/locales/#{fn}"
+      if @base_path != /^https?:\/\// or uri_exists?(path)
+        content = open(path).read rescue nil
+        file "config/locales/#{fn}", content if content
+      end
     end
   end
 end
