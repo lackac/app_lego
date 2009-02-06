@@ -27,20 +27,15 @@ file 'app/helpers/application_helper.rb',
 end
 }
 
-git :rm => 'config/locales/en.yml'
-file 'config/locales/en.app.yml', <<-YAML
-en:
-  app_name: "APP_NAME"
-YAML
 
-if ENV['LOCALES']
-  ENV['LOCALES'].split(",").map {|l| l.gsub(/\.(yml|rb)$/, '')}.uniq.each do |locale|
-    file "config/locales/#{locale}.app.yml", <<-YAML
+Dir['config/locales/*.*'].map {|f| File.basename(f).split(".").first}.uniq.each do |locale|
+  file "config/locales/#{locale}.app.yml", <<-YAML
 #{locale}:
   app_name: "APP_NAME"
-    YAML
-  end
+  YAML
 end
+
+git :rm => 'config/locales/en.yml'
 
 if File.exists?('vendor/plugins/haml')
 

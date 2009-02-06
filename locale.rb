@@ -1,8 +1,4 @@
-locales = if ENV['LOCALES']
-  ENV['LOCALES']
-else
-  ask("Which locales do you want to use (separate with commas if more)?")
-end.split(/[,\s]+/)
+locales = (ENV['LOCALES'] || ask("Which locales do you want to use (separate with commas if more)?")).split(/[,\s]+/)
 
 locales.each do |locale|
   locale += '.yml' unless locale =~ /\.(yml|rb)$/
