@@ -19,7 +19,7 @@ if @base_path
     locales.each do |locale|
       fn = "#{locale.split(".").first}.#{lego}.yml"
       path = "#{@base_path}/locales/#{fn}"
-      if @base_path != /^https?:\/\// or uri_exists?(path)
+      if @base_path !~ /^https?:\/\// or uri_exists?(path)
         content = open(path).read rescue nil
         file "config/locales/#{fn}", content if content
       end
