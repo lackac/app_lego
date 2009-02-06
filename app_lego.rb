@@ -33,6 +33,7 @@ modules = [
   ["rspec",   "Use RSpec instead of test/unit?"],
   ["haml",    "Use haml for views and sass for css?"],
   ["jquery",  "Use jQuery instead of Prototype + Script.aculo.us?"],
+  ["auth",    "Add authentication module?"],
   ["couchdb", "Use CouchDB?"],
   ["locale",  "Add specific localizations?"],
   ["misc",    "Add miscellaneous stuff (helpers, basic layout, flashes, initializers)?"],

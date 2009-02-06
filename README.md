@@ -36,6 +36,8 @@ The **Haml** module initializes the app for [Haml](http://haml.hamptoncatlin.com
 
 The **jQuery** module removes the default javascript files and installes jQuery, jQuery-UI and the jQuery Form plugin. The first two come with minified and full versions too.
 
+The **Auth** module adds the AuthLogic gem and generates a UserSession model for it with an optional user model. The name of the user model and the user identifier can be given in the `USER_MODEL` and `USER_IDENT` environment variables.
+
 The **CouchDB** module installs the [CouchRest](http://github.com/jchris/couchrest/tree/master) gem and the [BasicModel](http://github.com/topfunky/basic_model/tree/master) plugin.
 
 The **locale** module will download localization files from Sven Fuchs' [rails-i18n](http://github.com/svenfuchs/rails-i18n/tree/master/rails/locale) repository. The generator will ask for the list of the localizations the user wants, but it can be given through the `LOCALES` environment variable too. The list is comma separated, and where no extension is given `.yml` is assumed. The first locale in the list will be used as the default locale. Example:
