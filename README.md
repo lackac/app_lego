@@ -18,7 +18,7 @@ The options and modules can be passed in through the `LEGOS` environment variabl
 
 Listing all the available options and modules:
 
-    $ LEGOS="braid,rspec,haml,jquery,couchdb,locale,misc" rails -m http://github.com/lackac/app_lego/raw/master/app_lego.rb my_app
+    $ LEGOS="braid,basic,rspec,haml,jquery,auth,couchdb,locale,misc" rails -m http://github.com/lackac/app_lego/raw/master/app_lego.rb my_app
 
 # Options
 
@@ -28,7 +28,7 @@ App LEGO can use [Braid](http://github.com/evilchelu/braid/wikis) to manage vend
 
 # Modules
 
-The basic generator initializes the Rails application in a git repository, removes unnecessary files and directories, sets up `.gitignore` files and freezes Edge Rails.
+The **basic** module initializes the Rails application in a git repository, removes unnecessary files and directories, sets up `.gitignore` files and freezes Edge Rails.
 
 The **RSpec** module remove the `test` directory and installs the plugins necessary for RSpec. It also runs the rspec generator.
 
