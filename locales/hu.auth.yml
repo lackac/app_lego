@@ -1,0 +1,14 @@
+hu:
+  authlogic:
+    error_messages:
+      login_blank: "nem lehet üres"
+      login_not_found: "nem található"
+      login_invalid: "csak betűket, számokat, szóközöket és a .-_@ karaktereket tartalmazhatja"
+      email_invalid: "email címnek kell kinéznie"
+      password_blank: "nem lehet üres"
+      password_invalid: "helytelen"
+      not_active: "A hozzáférésed még nincs aktiválva"
+      not_confirmed: "A hozzáférésed még nincs megerősítve"
+      not_approved: "A hozzáférésed még nincs jóváhagyva"
+      blank_record: "Nem jelentkezhetsz be üres adatokkal"
+      new_record: "Nem jelentkezhetsz be még nem mentett adatokkal"

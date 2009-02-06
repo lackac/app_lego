@@ -6,6 +6,17 @@ locales.each do |locale|
     open("http://github.com/svenfuchs/rails-i18n/raw/master/rails/locale/#{locale}").read
 end
 
+if @base_path
+  log '', 'Trying to download module specific localizations...'
+  @used_legos.each do |lego|
+    locales.each do |locale|
+      fn = "#{locale.split(".").first}.#{lego}.yml"
+      content = open("#{@base_path}/locales/#{fn}").read rescue nil
+      file "config/locales/#{fn}", content if content
+    end
+  end
+end
+
 gsub_file "config/environment.rb",
   /(#\s*)?config.i18n.default_locale.*$/,
   "config.i18n.default_locale = '#{locales.first.gsub(/\.(yml|rb)$/, '')}'"

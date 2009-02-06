@@ -43,6 +43,8 @@ The **CouchDB** module installs the [CouchRest](http://github.com/jchris/couchre
 The **locale** module will download localization files from Sven Fuchs' [rails-i18n](http://github.com/svenfuchs/rails-i18n/tree/master/rails/locale) repository. The generator will ask for the list of the localizations the user wants, but it can be given through the `LOCALES` environment variable too. The list is comma separated, and where no extension is given `.yml` is assumed. The first locale in the list will be used as the default locale. Example:
 
     $ LOCALES='hu,de,nl.rb' LEGOS='locale' rails -m http://github.com/lackac/app_lego/raw/master/app_lego.rb my_app
+
+The locale module also checks for module specific localizations in `locales/` under the same path App LEGO was called from.
   
 The **misc** module inserts miscellaneous files into the application. These include a basic `application_controller.rb`, some helpers, a basic layout with flashes taken care of and some initializers.
 

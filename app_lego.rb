@@ -1,12 +1,15 @@
 # environment options
 @lego_options = ENV['LEGOS'] ? ENV['LEGOS'].downcase.split(/[,\s]+/) : false
+@used_legos = []
 
 def use_lego?(lego, question)
-  if @lego_options
+  use = if @lego_options
     @lego_options.include?(lego)
   else
     yes?(question)
   end
+  @used_legos << lego if use
+  use
 end
 
 # braid helpers
@@ -42,7 +45,7 @@ modules = [
 if @lego_options or yes?("Do you want to play LEGO?")
   all_yes = @lego_options ? false : yes?("Install everything without question?")
 
-  base_path = if template =~ %r{^(/|\w+://)}
+  @base_path = if template =~ %r{^(/|\w+://)}
     File.dirname(template)
   else
     log '', "You used the app generator with a relative template path."
@@ -51,7 +54,7 @@ if @lego_options or yes?("Do you want to play LEGO?")
 
   modules.each do |modul, question|
     if all_yes or use_lego?(modul, question)
-      tmpl = "#{base_path}/#{modul}.rb"
+      tmpl = "#{@base_path}/#{modul}.rb"
       log "applying", "template: #{tmpl}"
       load_template(tmpl)
       log "applied", tmpl
