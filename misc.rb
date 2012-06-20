@@ -1,5 +1,5 @@
 # app files
-file 'app/controllers/application_controller.rb', 
+file 'app/controllers/application_controller.rb',
 %q{class ApplicationController < ActionController::Base
 
   helper :all
@@ -11,7 +11,7 @@ file 'app/controllers/application_controller.rb',
 end
 }
 
-file 'app/helpers/application_helper.rb', 
+file 'app/helpers/application_helper.rb',
 %q{module ApplicationHelper
   def page_title(title=nil)
     if title.nil?
@@ -97,7 +97,7 @@ end
 
 # initializers
 
-initializer 'requires.rb', 
+initializer 'requires.rb',
 %q{Dir[Rails.root.join('lib', '*.rb')].each do |f|
   require f
 end
